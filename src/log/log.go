@@ -1,27 +1,34 @@
 package log
 
 import (
-	"github.com/sirupsen/logrus"
 	"os"
 
-	stackdriver "github.com/TV4/logrus-stackdriver-formatter"
+	"github.com/rs/zerolog"
 )
 
 // L is the main exposed logger
-var L = logrus.New()
+var L *zerolog.Logger
 
 // ConfigureGlobalLogger with the correct formatter and debug level
-func ConfigureGlobalLogger(logLevel logrus.Level) {
+func ConfigureGlobalLogger(logLevel zerolog.Level) {
+	zerolog.SetGlobalLevel(logLevel)
+
+	logger := zerolog.
+		New(os.Stderr).
+		With().
+		Timestamp()
 
 	// Automatically detect if we are in GCR and apply Stackdriver log format
 	// https://cloud.google.com/run/docs/reference/container-contract#env-vars
 	serviceName := os.Getenv("K_SERVICE")
 	if serviceName != "" {
-		L.Formatter = stackdriver.NewFormatter(
-			stackdriver.WithService(serviceName),
-			stackdriver.WithVersion(os.Getenv("K_REVISION")),
-		)
+		logger.Str("service", serviceName).
+			Str("revision", os.Getenv("K_REVISION")).Logger()
+		l := logger.Logger()
+		L = &l
+		return
 	}
 
-	L.Level = logLevel
+	l := logger.Logger().Output(zerolog.ConsoleWriter{Out: os.Stderr, NoColor: false})
+	L = &l
 }
