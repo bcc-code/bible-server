@@ -1,38 +1,70 @@
 package main
 
 import (
-	"context"
 	"database/sql"
 	"fmt"
+	"net"
 	"net/http"
+	"os"
 	"strconv"
 
 	"github.com/gin-contrib/logger"
 	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3" // Import go-sqlite3 library
 	"github.com/rs/zerolog"
+	"github.com/soheilhy/cmux"
 
 	"go.bcc.media/bibleserver/log"
 )
 
 var bibles map[string]*sql.DB
 
+func getEnv(key, fallback string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return fallback
+}
+
 func main() {
 	log.ConfigureGlobalLogger(zerolog.DebugLevel)
 	bibles = map[string]*sql.DB{}
 
+	// TODO: Better path logic, potentially only a location and autoload all *.sqlite
+	// Also we could load bibles on demand later
 	db, _ := sql.Open("sqlite3", "../bibles/nb-1930.sqlite")
 	defer db.Close()
 	bibles["NB-1930"] = db
+
+	log.L.Info().Msgf("Loaded %d bibles", len(bibles))
+
+	// Create the main listener.
+
+	l, err := net.Listen("tcp", (fmt.Sprintf(":%s", getEnv("PORT", "8000"))))
+	if err != nil {
+		log.L.Fatal().Err(err)
+	}
+
+	// Create a cmux.
+	m := cmux.New(l)
+
+	// Match connections in order:
+	// First grpc, then HTTP, and otherwise Go RPC/TCP.
+	//	grpcL := m.Match(cmux.HTTP2HeaderField("content-type", "application/grpc"))
+	httpL := m.Match(cmux.Any())
+
+	//go grpcS.Serve(grpcL)
 
 	router := gin.Default()
 	router.Use(logger.SetLogger(logger.Config{
 		Logger: log.L,
 	}))
 	router.GET("v1/:bible/books", listBooks)
-	router.GET("v1/:bible/:book/:chapter/:verse_from", getSingleVerse)
-	router.GET("v1/:bible/:book/:chapter/:verse_from/:verse_to", getMultipleVerses)
-	router.Run(":8080")
+	router.GET("v1/:bible/:book/:chapter/:verse_from", getVersesHandler)
+	router.GET("v1/:bible/:book/:chapter/:verse_from/:verse_to", getVersesHandler)
+
+	go router.RunListener(httpL)
+	m.Serve()
 }
 
 // Book represents a book in the bible
@@ -75,66 +107,22 @@ func listBooks(c *gin.Context) {
 	c.JSON(http.StatusOK, books)
 }
 
-type Verse struct {
-	Number    uint32
-	Text      string
-	Footnotes []string
+type verseResponse struct {
+	Verses []Verse
 }
 
-func getVerses(ctx context.Context, bibleID string, book, chapter, verseFrom, verseTo uint32) ([]Verse, error) {
-	var bible *sql.DB
-	if b, ok := bibles[bibleID]; ok {
-		bible = b
-	} else {
-		return nil, fmt.Errorf("Bible %s not found", bibleID)
-	}
-
-	row, err := bible.QueryContext(ctx, "SELECT verse, text FROM verses WHERE book_number = ? AND chapter = ? AND verse >= ? AND verse <= ?", book, chapter, verseFrom, verseTo)
-	if err != nil {
-		return nil, err
-	}
-	defer row.Close()
-
-	verses := []Verse{}
-
-	for row.Next() { // Iterate and fetch the records from result cursor
-		v := Verse{}
-		row.Scan(&v.Number, &v.Text)
-		verses = append(verses, v)
-	}
-
-	return verses, nil
-}
-
-func getSingleVerse(c *gin.Context) {
-	bibleID := c.Param("bible")
-	book, _ := strconv.ParseInt(c.Param("book"), 10, 32)
-	chapter, _ := strconv.ParseInt(c.Param("chapter"), 10, 32)
-	verseFrom, _ := strconv.ParseInt(c.Param("verse_from"), 10, 32)
-
-	verses, err := getVerses(c.Request.Context(), bibleID, uint32(book), uint32(chapter), uint32(verseFrom), uint32(verseFrom))
-	if err != nil {
-		log.L.Err(err)
-		c.AbortWithStatus(500)
-		return
-	}
-
-	if len(verses) == 0 {
-		c.AbortWithStatus(404)
-		return
-	}
-
-	c.JSON(200, verses)
-}
-
-func getMultipleVerses(c *gin.Context) {
+func getVersesHandler(c *gin.Context) {
 	bibleID := c.Param("bible")
 	book, _ := strconv.ParseInt(c.Param("book"), 10, 32)
 	chapter, _ := strconv.ParseInt(c.Param("chapter"), 10, 32)
 	verseFrom, _ := strconv.ParseInt(c.Param("verse_from"), 10, 32)
 	verseTo, _ := strconv.ParseInt(c.Param("verse_to"), 10, 32)
 
-	verses, err := getVerses(c.Request.Context(), bibleID, uint32(book), uint32(chapter), uint32(verseFrom), uint32(verseTo))
+	if verseTo < verseFrom {
+		verseTo = verseFrom
+	}
+
+	verses, err := getVerses(c.Request.Context(), bibles, bibleID, uint32(book), uint32(chapter), uint32(verseFrom), uint32(verseTo))
 	if err != nil {
 		log.L.Err(err)
 		c.AbortWithStatus(500)
@@ -146,5 +134,5 @@ func getMultipleVerses(c *gin.Context) {
 		return
 	}
 
-	c.JSON(200, verses)
+	c.JSON(200, verseResponse{Verses: verses})
 }

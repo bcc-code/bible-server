@@ -10,4 +10,6 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.7
 	github.com/rs/zerolog v1.21.0
 	github.com/sirupsen/logrus v1.8.1
+	github.com/soheilhy/cmux v0.1.5
+	gonum.org/v1/gonum v0.9.1
 )
