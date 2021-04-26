@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"net"
@@ -8,13 +9,17 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/gin-contrib/logger"
 	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3" // Import go-sqlite3 library
 	"github.com/rs/zerolog"
 	"github.com/soheilhy/cmux"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 
 	"go.bcc.media/bibleserver/log"
+	"go.bcc.media/bibleserver/proto"
 )
 
 var bibles map[string]*sql.DB
@@ -45,20 +50,22 @@ func main() {
 
 	// Create the main listener.
 
-	l, err := net.Listen("tcp", (fmt.Sprintf(":%s", getEnv("PORT", "8000"))))
+	l, err := net.Listen("tcp", (fmt.Sprintf("127.0.0.1:%s", getEnv("PORT", "8000"))))
 	if err != nil {
 		log.L.Fatal().Err(err).Msg("")
 	}
+
+	grpcS := grpc.NewServer()
+	proto.RegisterBibleServerServer(grpcS, &GRPCBibleServer{})
+	reflection.Register(grpcS)
 
 	// Create a cmux.
 	m := cmux.New(l)
 
 	// Match connections in order:
 	// First grpc, then HTTP, and otherwise Go RPC/TCP.
-	//	grpcL := m.Match(cmux.HTTP2HeaderField("content-type", "application/grpc"))
+	grpcL := m.MatchWithWriters(cmux.HTTP2MatchHeaderFieldSendSettings("content-type", "application/grpc"))
 	httpL := m.Match(cmux.Any())
-
-	//go grpcS.Serve(grpcL)
 
 	router := gin.Default()
 	router.Use(logger.SetLogger(logger.Config{
@@ -68,8 +75,25 @@ func main() {
 	router.GET("v1/:bible/:book/:chapter/:verse_from", getVersesHandler)
 	router.GET("v1/:bible/:book/:chapter/:verse_from/:verse_to", getVersesHandler)
 
+	go grpcS.Serve(grpcL)
 	go router.RunListener(httpL)
 	m.Serve()
+}
+
+type GRPCBibleServer struct {
+	proto.UnimplementedBibleServerServer
+}
+
+func (s GRPCBibleServer) GetVerses(ctx context.Context, req *proto.GetVersesRequest) (*proto.GetVersesResponse, error) {
+	spew.Dump(req)
+
+	verses, err := getVerses(ctx, bibles, req.BibleId, req.BookId, req.Chapter, req.VerseFrom, req.VerseTo)
+	if err != nil {
+		log.L.Error().Err(err).Msg("")
+		return nil, err
+	}
+
+	return &proto.GetVersesResponse{Verses: verses.ToProto()}, nil
 }
 
 // Book represents a book in the bible
