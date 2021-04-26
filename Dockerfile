@@ -4,7 +4,7 @@ RUN mkdir /work
 WORKDIR /work
 COPY . .
 RUN cd src && go get -d -v
-RUN cd src && go build -o /work/bibleserver
+RUN cd src && CGO_ENABLED=0 go build -o /work/bibleserver
 
 FROM scratch
 COPY --from=builder /work/bibleserver/ /bin/bibleserver
