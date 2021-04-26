@@ -77,7 +77,7 @@ type Book struct {
 	// This shoudl be the canonical english version as defined in TODO.
 	// The reason for this is so that we can have huma readable canonical
 	// representations, f.ex. `1Pet 2/7-8`
-	ID string
+	ID string `json:"Id"`
 
 	Number    uint16 // Mostly for sorting
 	LongName  string // Localized long name
@@ -103,7 +103,7 @@ func listBooks(c *gin.Context) {
 
 	books := []Book{}
 
-	for row.Next() { // Iterate and fetch the records from result cursor
+	for row.Next() {
 		b := Book{}
 		row.Scan(&b.Number, &b.LongName, &b.ShortName)
 		books = append(books, b)

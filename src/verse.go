@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 	"regexp"
+	"strings"
 )
 
 var (
@@ -52,6 +53,7 @@ func NewVerse(number uint32, text string) Verse {
 
 	v = v.removeTags()
 	v = v.parseFootnotes()
+	v.Text = strings.TrimSpace(v.Text)
 
 	return v
 }
