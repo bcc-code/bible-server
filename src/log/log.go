@@ -26,6 +26,7 @@ func ConfigureGlobalLogger(logLevel zerolog.Level) {
 			Str("revision", os.Getenv("K_REVISION")).Logger()
 		l := logger.Logger()
 		L = &l
+		L.Warn().Msgf("%+v", os.Environ())
 		return
 	}
 

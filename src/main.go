@@ -30,11 +30,13 @@ func main() {
 	log.ConfigureGlobalLogger(zerolog.DebugLevel)
 	bibles = map[string]*sql.DB{}
 
+	biblePath := getEnv("BIBLE_PATH", "../bibles/")
+
 	// TODO: Better path logic, potentially only a location and autoload all *.sqlite
 	// Also we could load bibles on demand later
-	db, err := sql.Open("sqlite3", "../bibles/nb-1930.sqlite")
+	db, err := sql.Open("sqlite3", fmt.Sprintf("%s/nb-1930.sqlite", biblePath))
 	if err != nil {
-		log.L.Fatal().Err(err)
+		log.L.Fatal().Err(err).Msg("")
 	}
 	defer db.Close()
 	bibles["NB-1930"] = db
@@ -45,7 +47,7 @@ func main() {
 
 	l, err := net.Listen("tcp", (fmt.Sprintf(":%s", getEnv("PORT", "8000"))))
 	if err != nil {
-		log.L.Fatal().Err(err)
+		log.L.Fatal().Err(err).Msg("")
 	}
 
 	// Create a cmux.
@@ -94,7 +96,7 @@ func listBooks(c *gin.Context) {
 
 	row, err := bible.QueryContext(c.Request.Context(), "SELECT book_number, long_name, short_name FROM books")
 	if err != nil {
-		log.L.Fatal().Err(err)
+		log.L.Fatal().Err(err).Msg("")
 	}
 
 	defer row.Close()
@@ -127,7 +129,7 @@ func getVersesHandler(c *gin.Context) {
 
 	verses, err := getVerses(c.Request.Context(), bibles, bibleID, uint32(book), uint32(chapter), uint32(verseFrom), uint32(verseTo))
 	if err != nil {
-		log.L.Err(err)
+		log.L.Err(err).Msg("")
 		c.AbortWithStatus(500)
 		return
 	}

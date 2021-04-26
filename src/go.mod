@@ -4,6 +4,7 @@ go 1.15
 
 require (
 	github.com/TV4/logrus-stackdriver-formatter v0.1.0
+	github.com/davecgh/go-spew v1.1.1
 	github.com/gin-contrib/logger v0.0.3
 	github.com/gin-gonic/gin v1.7.1
 	github.com/go-stack/stack v1.8.0 // indirect
