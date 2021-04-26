@@ -31,5 +31,5 @@ func ConfigureGlobalLogger(logLevel zerolog.Level) {
 
 	l := logger.Logger().Output(zerolog.ConsoleWriter{Out: os.Stderr, NoColor: false})
 	L = &l
-	L.Debug().Msgf("%+v", os.Environ())
+	L.Warn().Msgf("%+v", os.Environ())
 }

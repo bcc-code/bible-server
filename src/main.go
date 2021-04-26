@@ -32,7 +32,10 @@ func main() {
 
 	// TODO: Better path logic, potentially only a location and autoload all *.sqlite
 	// Also we could load bibles on demand later
-	db, _ := sql.Open("sqlite3", "../bibles/nb-1930.sqlite")
+	db, err := sql.Open("sqlite3", "../bibles/nb-1930.sqlite")
+	if err != nil {
+		log.L.Fatal().Err(err)
+	}
 	defer db.Close()
 	bibles["NB-1930"] = db
 
