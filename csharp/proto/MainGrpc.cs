@@ -44,6 +44,8 @@ namespace BCCMedia.BibleServer {
 
     static readonly grpc::Marshaller<global::BCCMedia.BibleServer.GetVersesRequest> __Marshaller_bibleserver_GetVersesRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::BCCMedia.BibleServer.GetVersesRequest.Parser));
     static readonly grpc::Marshaller<global::BCCMedia.BibleServer.GetVersesResponse> __Marshaller_bibleserver_GetVersesResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::BCCMedia.BibleServer.GetVersesResponse.Parser));
+    static readonly grpc::Marshaller<global::BCCMedia.BibleServer.ListBooksRequest> __Marshaller_bibleserver_ListBooksRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::BCCMedia.BibleServer.ListBooksRequest.Parser));
+    static readonly grpc::Marshaller<global::BCCMedia.BibleServer.ListBooksResponse> __Marshaller_bibleserver_ListBooksResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::BCCMedia.BibleServer.ListBooksResponse.Parser));
 
     static readonly grpc::Method<global::BCCMedia.BibleServer.GetVersesRequest, global::BCCMedia.BibleServer.GetVersesResponse> __Method_GetVerses = new grpc::Method<global::BCCMedia.BibleServer.GetVersesRequest, global::BCCMedia.BibleServer.GetVersesResponse>(
         grpc::MethodType.Unary,
@@ -51,6 +53,13 @@ namespace BCCMedia.BibleServer {
         "GetVerses",
         __Marshaller_bibleserver_GetVersesRequest,
         __Marshaller_bibleserver_GetVersesResponse);
+
+    static readonly grpc::Method<global::BCCMedia.BibleServer.ListBooksRequest, global::BCCMedia.BibleServer.ListBooksResponse> __Method_ListBooks = new grpc::Method<global::BCCMedia.BibleServer.ListBooksRequest, global::BCCMedia.BibleServer.ListBooksResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ListBooks",
+        __Marshaller_bibleserver_ListBooksRequest,
+        __Marshaller_bibleserver_ListBooksResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -63,6 +72,11 @@ namespace BCCMedia.BibleServer {
     public abstract partial class BibleServerBase
     {
       public virtual global::System.Threading.Tasks.Task<global::BCCMedia.BibleServer.GetVersesResponse> GetVerses(global::BCCMedia.BibleServer.GetVersesRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::BCCMedia.BibleServer.ListBooksResponse> ListBooks(global::BCCMedia.BibleServer.ListBooksRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -108,6 +122,22 @@ namespace BCCMedia.BibleServer {
       {
         return CallInvoker.AsyncUnaryCall(__Method_GetVerses, null, options, request);
       }
+      public virtual global::BCCMedia.BibleServer.ListBooksResponse ListBooks(global::BCCMedia.BibleServer.ListBooksRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListBooks(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::BCCMedia.BibleServer.ListBooksResponse ListBooks(global::BCCMedia.BibleServer.ListBooksRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ListBooks, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::BCCMedia.BibleServer.ListBooksResponse> ListBooksAsync(global::BCCMedia.BibleServer.ListBooksRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListBooksAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::BCCMedia.BibleServer.ListBooksResponse> ListBooksAsync(global::BCCMedia.BibleServer.ListBooksRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ListBooks, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override BibleServerClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -120,7 +150,8 @@ namespace BCCMedia.BibleServer {
     public static grpc::ServerServiceDefinition BindService(BibleServerBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_GetVerses, serviceImpl.GetVerses).Build();
+          .AddMethod(__Method_GetVerses, serviceImpl.GetVerses)
+          .AddMethod(__Method_ListBooks, serviceImpl.ListBooks).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -130,6 +161,7 @@ namespace BCCMedia.BibleServer {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, BibleServerBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_GetVerses, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::BCCMedia.BibleServer.GetVersesRequest, global::BCCMedia.BibleServer.GetVersesResponse>(serviceImpl.GetVerses));
+      serviceBinder.AddMethod(__Method_ListBooks, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::BCCMedia.BibleServer.ListBooksRequest, global::BCCMedia.BibleServer.ListBooksResponse>(serviceImpl.ListBooks));
     }
 
   }

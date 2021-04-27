@@ -7,7 +7,6 @@ option go_package = "go.bcc.media/bibleserver/proto";
 option csharp_namespace = "BCCMedia.BibleServer";
 
 message Verse {
-	string id = 1;
 	string text = 2;
 	uint32 number = 3;
 	map<string,string> footnotes = 4;
@@ -15,7 +14,7 @@ message Verse {
 
 message GetVersesRequest {
 	string bible_id = 1;
-	uint32 book_id = 2;
+	string book_id = 2;
 	uint32 chapter = 3;
 	uint32 verse_from = 4;
 	uint32 verse_to = 5;
@@ -23,8 +22,28 @@ message GetVersesRequest {
 
 message GetVersesResponse {
 	repeated Verse verses = 1;
+	string bible_id = 2;
+	string book_id = 3;
+	uint32 chapter = 4;
+}
+
+message Book {
+	string id = 1;
+	uint32 number = 2;
+	string long_name = 3;
+	string short_name = 4;
+}
+
+message ListBooksRequest {
+	string bible_id = 1;
+}
+
+message ListBooksResponse {
+	string bible_id = 1;
+	repeated Book books = 2;
 }
 
 service BibleServer {
 	rpc GetVerses(GetVersesRequest) returns (GetVersesResponse);
+	rpc ListBooks(ListBooksRequest) returns (ListBooksResponse);
 }

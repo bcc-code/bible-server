@@ -24,24 +24,33 @@ namespace BCCMedia.BibleServer {
     static MainReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgptYWluLnByb3RvEgtiaWJsZXNlcnZlciKZAQoFVmVyc2USCgoCaWQYASAB",
-            "KAkSDAoEdGV4dBgCIAEoCRIOCgZudW1iZXIYAyABKA0SNAoJZm9vdG5vdGVz",
-            "GAQgAygLMiEuYmlibGVzZXJ2ZXIuVmVyc2UuRm9vdG5vdGVzRW50cnkaMAoO",
-            "Rm9vdG5vdGVzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4",
-            "ASJsChBHZXRWZXJzZXNSZXF1ZXN0EhAKCGJpYmxlX2lkGAEgASgJEg8KB2Jv",
-            "b2tfaWQYAiABKA0SDwoHY2hhcHRlchgDIAEoDRISCgp2ZXJzZV9mcm9tGAQg",
-            "ASgNEhAKCHZlcnNlX3RvGAUgASgNIjcKEUdldFZlcnNlc1Jlc3BvbnNlEiIK",
-            "BnZlcnNlcxgBIAMoCzISLmJpYmxlc2VydmVyLlZlcnNlMlkKC0JpYmxlU2Vy",
-            "dmVyEkoKCUdldFZlcnNlcxIdLmJpYmxlc2VydmVyLkdldFZlcnNlc1JlcXVl",
-            "c3QaHi5iaWJsZXNlcnZlci5HZXRWZXJzZXNSZXNwb25zZUI3Wh5nby5iY2Mu",
-            "bWVkaWEvYmlibGVzZXJ2ZXIvcHJvdG+qAhRCQ0NNZWRpYS5CaWJsZVNlcnZl",
-            "cmIGcHJvdG8z"));
+            "CgptYWluLnByb3RvEgtiaWJsZXNlcnZlciKNAQoFVmVyc2USDAoEdGV4dBgC",
+            "IAEoCRIOCgZudW1iZXIYAyABKA0SNAoJZm9vdG5vdGVzGAQgAygLMiEuYmli",
+            "bGVzZXJ2ZXIuVmVyc2UuRm9vdG5vdGVzRW50cnkaMAoORm9vdG5vdGVzRW50",
+            "cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASJsChBHZXRWZXJz",
+            "ZXNSZXF1ZXN0EhAKCGJpYmxlX2lkGAEgASgJEg8KB2Jvb2tfaWQYAiABKAkS",
+            "DwoHY2hhcHRlchgDIAEoDRISCgp2ZXJzZV9mcm9tGAQgASgNEhAKCHZlcnNl",
+            "X3RvGAUgASgNImsKEUdldFZlcnNlc1Jlc3BvbnNlEiIKBnZlcnNlcxgBIAMo",
+            "CzISLmJpYmxlc2VydmVyLlZlcnNlEhAKCGJpYmxlX2lkGAIgASgJEg8KB2Jv",
+            "b2tfaWQYAyABKAkSDwoHY2hhcHRlchgEIAEoDSJJCgRCb29rEgoKAmlkGAEg",
+            "ASgJEg4KBm51bWJlchgCIAEoDRIRCglsb25nX25hbWUYAyABKAkSEgoKc2hv",
+            "cnRfbmFtZRgEIAEoCSIkChBMaXN0Qm9va3NSZXF1ZXN0EhAKCGJpYmxlX2lk",
+            "GAEgASgJIkcKEUxpc3RCb29rc1Jlc3BvbnNlEhAKCGJpYmxlX2lkGAEgASgJ",
+            "EiAKBWJvb2tzGAIgAygLMhEuYmlibGVzZXJ2ZXIuQm9vazKlAQoLQmlibGVT",
+            "ZXJ2ZXISSgoJR2V0VmVyc2VzEh0uYmlibGVzZXJ2ZXIuR2V0VmVyc2VzUmVx",
+            "dWVzdBoeLmJpYmxlc2VydmVyLkdldFZlcnNlc1Jlc3BvbnNlEkoKCUxpc3RC",
+            "b29rcxIdLmJpYmxlc2VydmVyLkxpc3RCb29rc1JlcXVlc3QaHi5iaWJsZXNl",
+            "cnZlci5MaXN0Qm9va3NSZXNwb25zZUI3Wh5nby5iY2MubWVkaWEvYmlibGVz",
+            "ZXJ2ZXIvcHJvdG+qAhRCQ0NNZWRpYS5CaWJsZVNlcnZlcmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::BCCMedia.BibleServer.Verse), global::BCCMedia.BibleServer.Verse.Parser, new[]{ "Id", "Text", "Number", "Footnotes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::BCCMedia.BibleServer.Verse), global::BCCMedia.BibleServer.Verse.Parser, new[]{ "Text", "Number", "Footnotes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::BCCMedia.BibleServer.GetVersesRequest), global::BCCMedia.BibleServer.GetVersesRequest.Parser, new[]{ "BibleId", "BookId", "Chapter", "VerseFrom", "VerseTo" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::BCCMedia.BibleServer.GetVersesResponse), global::BCCMedia.BibleServer.GetVersesResponse.Parser, new[]{ "Verses" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::BCCMedia.BibleServer.GetVersesResponse), global::BCCMedia.BibleServer.GetVersesResponse.Parser, new[]{ "Verses", "BibleId", "BookId", "Chapter" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::BCCMedia.BibleServer.Book), global::BCCMedia.BibleServer.Book.Parser, new[]{ "Id", "Number", "LongName", "ShortName" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::BCCMedia.BibleServer.ListBooksRequest), global::BCCMedia.BibleServer.ListBooksRequest.Parser, new[]{ "BibleId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::BCCMedia.BibleServer.ListBooksResponse), global::BCCMedia.BibleServer.ListBooksResponse.Parser, new[]{ "BibleId", "Books" }, null, null, null, null)
           }));
     }
     #endregion
@@ -77,7 +86,6 @@ namespace BCCMedia.BibleServer {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Verse(Verse other) : this() {
-      id_ = other.id_;
       text_ = other.text_;
       number_ = other.number_;
       footnotes_ = other.footnotes_.Clone();
@@ -87,17 +95,6 @@ namespace BCCMedia.BibleServer {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Verse Clone() {
       return new Verse(this);
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private string id_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Id {
-      get { return id_; }
-      set {
-        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
     }
 
     /// <summary>Field number for the "text" field.</summary>
@@ -145,7 +142,6 @@ namespace BCCMedia.BibleServer {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Id != other.Id) return false;
       if (Text != other.Text) return false;
       if (Number != other.Number) return false;
       if (!Footnotes.Equals(other.Footnotes)) return false;
@@ -155,7 +151,6 @@ namespace BCCMedia.BibleServer {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (Text.Length != 0) hash ^= Text.GetHashCode();
       if (Number != 0) hash ^= Number.GetHashCode();
       hash ^= Footnotes.GetHashCode();
@@ -175,10 +170,6 @@ namespace BCCMedia.BibleServer {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Id.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Id);
-      }
       if (Text.Length != 0) {
         output.WriteRawTag(18);
         output.WriteString(Text);
@@ -197,10 +188,6 @@ namespace BCCMedia.BibleServer {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Id.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Id);
-      }
       if (Text.Length != 0) {
         output.WriteRawTag(18);
         output.WriteString(Text);
@@ -219,9 +206,6 @@ namespace BCCMedia.BibleServer {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Id.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
-      }
       if (Text.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Text);
       }
@@ -239,9 +223,6 @@ namespace BCCMedia.BibleServer {
     public void MergeFrom(Verse other) {
       if (other == null) {
         return;
-      }
-      if (other.Id.Length != 0) {
-        Id = other.Id;
       }
       if (other.Text.Length != 0) {
         Text = other.Text;
@@ -264,10 +245,6 @@ namespace BCCMedia.BibleServer {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            Id = input.ReadString();
-            break;
-          }
           case 18: {
             Text = input.ReadString();
             break;
@@ -294,10 +271,6 @@ namespace BCCMedia.BibleServer {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            Id = input.ReadString();
-            break;
-          }
           case 18: {
             Text = input.ReadString();
             break;
@@ -372,12 +345,12 @@ namespace BCCMedia.BibleServer {
 
     /// <summary>Field number for the "book_id" field.</summary>
     public const int BookIdFieldNumber = 2;
-    private uint bookId_;
+    private string bookId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint BookId {
+    public string BookId {
       get { return bookId_; }
       set {
-        bookId_ = value;
+        bookId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -439,7 +412,7 @@ namespace BCCMedia.BibleServer {
     public override int GetHashCode() {
       int hash = 1;
       if (BibleId.Length != 0) hash ^= BibleId.GetHashCode();
-      if (BookId != 0) hash ^= BookId.GetHashCode();
+      if (BookId.Length != 0) hash ^= BookId.GetHashCode();
       if (Chapter != 0) hash ^= Chapter.GetHashCode();
       if (VerseFrom != 0) hash ^= VerseFrom.GetHashCode();
       if (VerseTo != 0) hash ^= VerseTo.GetHashCode();
@@ -463,9 +436,9 @@ namespace BCCMedia.BibleServer {
         output.WriteRawTag(10);
         output.WriteString(BibleId);
       }
-      if (BookId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(BookId);
+      if (BookId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(BookId);
       }
       if (Chapter != 0) {
         output.WriteRawTag(24);
@@ -492,9 +465,9 @@ namespace BCCMedia.BibleServer {
         output.WriteRawTag(10);
         output.WriteString(BibleId);
       }
-      if (BookId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(BookId);
+      if (BookId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(BookId);
       }
       if (Chapter != 0) {
         output.WriteRawTag(24);
@@ -520,8 +493,8 @@ namespace BCCMedia.BibleServer {
       if (BibleId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(BibleId);
       }
-      if (BookId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BookId);
+      if (BookId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BookId);
       }
       if (Chapter != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Chapter);
@@ -546,7 +519,7 @@ namespace BCCMedia.BibleServer {
       if (other.BibleId.Length != 0) {
         BibleId = other.BibleId;
       }
-      if (other.BookId != 0) {
+      if (other.BookId.Length != 0) {
         BookId = other.BookId;
       }
       if (other.Chapter != 0) {
@@ -576,8 +549,8 @@ namespace BCCMedia.BibleServer {
             BibleId = input.ReadString();
             break;
           }
-          case 16: {
-            BookId = input.ReadUInt32();
+          case 18: {
+            BookId = input.ReadString();
             break;
           }
           case 24: {
@@ -610,8 +583,8 @@ namespace BCCMedia.BibleServer {
             BibleId = input.ReadString();
             break;
           }
-          case 16: {
-            BookId = input.ReadUInt32();
+          case 18: {
+            BookId = input.ReadString();
             break;
           }
           case 24: {
@@ -663,6 +636,9 @@ namespace BCCMedia.BibleServer {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public GetVersesResponse(GetVersesResponse other) : this() {
       verses_ = other.verses_.Clone();
+      bibleId_ = other.bibleId_;
+      bookId_ = other.bookId_;
+      chapter_ = other.chapter_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -681,6 +657,39 @@ namespace BCCMedia.BibleServer {
       get { return verses_; }
     }
 
+    /// <summary>Field number for the "bible_id" field.</summary>
+    public const int BibleIdFieldNumber = 2;
+    private string bibleId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string BibleId {
+      get { return bibleId_; }
+      set {
+        bibleId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "book_id" field.</summary>
+    public const int BookIdFieldNumber = 3;
+    private string bookId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string BookId {
+      get { return bookId_; }
+      set {
+        bookId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "chapter" field.</summary>
+    public const int ChapterFieldNumber = 4;
+    private uint chapter_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint Chapter {
+      get { return chapter_; }
+      set {
+        chapter_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as GetVersesResponse);
@@ -695,6 +704,9 @@ namespace BCCMedia.BibleServer {
         return true;
       }
       if(!verses_.Equals(other.verses_)) return false;
+      if (BibleId != other.BibleId) return false;
+      if (BookId != other.BookId) return false;
+      if (Chapter != other.Chapter) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -702,6 +714,9 @@ namespace BCCMedia.BibleServer {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= verses_.GetHashCode();
+      if (BibleId.Length != 0) hash ^= BibleId.GetHashCode();
+      if (BookId.Length != 0) hash ^= BookId.GetHashCode();
+      if (Chapter != 0) hash ^= Chapter.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -719,6 +734,18 @@ namespace BCCMedia.BibleServer {
       output.WriteRawMessage(this);
     #else
       verses_.WriteTo(output, _repeated_verses_codec);
+      if (BibleId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(BibleId);
+      }
+      if (BookId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(BookId);
+      }
+      if (Chapter != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Chapter);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -729,6 +756,18 @@ namespace BCCMedia.BibleServer {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       verses_.WriteTo(ref output, _repeated_verses_codec);
+      if (BibleId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(BibleId);
+      }
+      if (BookId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(BookId);
+      }
+      if (Chapter != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Chapter);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -739,6 +778,15 @@ namespace BCCMedia.BibleServer {
     public int CalculateSize() {
       int size = 0;
       size += verses_.CalculateSize(_repeated_verses_codec);
+      if (BibleId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BibleId);
+      }
+      if (BookId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BookId);
+      }
+      if (Chapter != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Chapter);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -751,6 +799,15 @@ namespace BCCMedia.BibleServer {
         return;
       }
       verses_.Add(other.verses_);
+      if (other.BibleId.Length != 0) {
+        BibleId = other.BibleId;
+      }
+      if (other.BookId.Length != 0) {
+        BookId = other.BookId;
+      }
+      if (other.Chapter != 0) {
+        Chapter = other.Chapter;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -769,6 +826,18 @@ namespace BCCMedia.BibleServer {
             verses_.AddEntriesFrom(input, _repeated_verses_codec);
             break;
           }
+          case 18: {
+            BibleId = input.ReadString();
+            break;
+          }
+          case 26: {
+            BookId = input.ReadString();
+            break;
+          }
+          case 32: {
+            Chapter = input.ReadUInt32();
+            break;
+          }
         }
       }
     #endif
@@ -785,6 +854,667 @@ namespace BCCMedia.BibleServer {
             break;
           case 10: {
             verses_.AddEntriesFrom(ref input, _repeated_verses_codec);
+            break;
+          }
+          case 18: {
+            BibleId = input.ReadString();
+            break;
+          }
+          case 26: {
+            BookId = input.ReadString();
+            break;
+          }
+          case 32: {
+            Chapter = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class Book : pb::IMessage<Book>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Book> _parser = new pb::MessageParser<Book>(() => new Book());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Book> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::BCCMedia.BibleServer.MainReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Book() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Book(Book other) : this() {
+      id_ = other.id_;
+      number_ = other.number_;
+      longName_ = other.longName_;
+      shortName_ = other.shortName_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Book Clone() {
+      return new Book(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "number" field.</summary>
+    public const int NumberFieldNumber = 2;
+    private uint number_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint Number {
+      get { return number_; }
+      set {
+        number_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "long_name" field.</summary>
+    public const int LongNameFieldNumber = 3;
+    private string longName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LongName {
+      get { return longName_; }
+      set {
+        longName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "short_name" field.</summary>
+    public const int ShortNameFieldNumber = 4;
+    private string shortName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ShortName {
+      get { return shortName_; }
+      set {
+        shortName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Book);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Book other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Number != other.Number) return false;
+      if (LongName != other.LongName) return false;
+      if (ShortName != other.ShortName) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (Number != 0) hash ^= Number.GetHashCode();
+      if (LongName.Length != 0) hash ^= LongName.GetHashCode();
+      if (ShortName.Length != 0) hash ^= ShortName.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (Number != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Number);
+      }
+      if (LongName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(LongName);
+      }
+      if (ShortName.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(ShortName);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (Number != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Number);
+      }
+      if (LongName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(LongName);
+      }
+      if (ShortName.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(ShortName);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (Number != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Number);
+      }
+      if (LongName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LongName);
+      }
+      if (ShortName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ShortName);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Book other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.Number != 0) {
+        Number = other.Number;
+      }
+      if (other.LongName.Length != 0) {
+        LongName = other.LongName;
+      }
+      if (other.ShortName.Length != 0) {
+        ShortName = other.ShortName;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 16: {
+            Number = input.ReadUInt32();
+            break;
+          }
+          case 26: {
+            LongName = input.ReadString();
+            break;
+          }
+          case 34: {
+            ShortName = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 16: {
+            Number = input.ReadUInt32();
+            break;
+          }
+          case 26: {
+            LongName = input.ReadString();
+            break;
+          }
+          case 34: {
+            ShortName = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class ListBooksRequest : pb::IMessage<ListBooksRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ListBooksRequest> _parser = new pb::MessageParser<ListBooksRequest>(() => new ListBooksRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ListBooksRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::BCCMedia.BibleServer.MainReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ListBooksRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ListBooksRequest(ListBooksRequest other) : this() {
+      bibleId_ = other.bibleId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ListBooksRequest Clone() {
+      return new ListBooksRequest(this);
+    }
+
+    /// <summary>Field number for the "bible_id" field.</summary>
+    public const int BibleIdFieldNumber = 1;
+    private string bibleId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string BibleId {
+      get { return bibleId_; }
+      set {
+        bibleId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ListBooksRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ListBooksRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (BibleId != other.BibleId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (BibleId.Length != 0) hash ^= BibleId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (BibleId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(BibleId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (BibleId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(BibleId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (BibleId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BibleId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ListBooksRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.BibleId.Length != 0) {
+        BibleId = other.BibleId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            BibleId = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            BibleId = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class ListBooksResponse : pb::IMessage<ListBooksResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ListBooksResponse> _parser = new pb::MessageParser<ListBooksResponse>(() => new ListBooksResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ListBooksResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::BCCMedia.BibleServer.MainReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ListBooksResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ListBooksResponse(ListBooksResponse other) : this() {
+      bibleId_ = other.bibleId_;
+      books_ = other.books_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ListBooksResponse Clone() {
+      return new ListBooksResponse(this);
+    }
+
+    /// <summary>Field number for the "bible_id" field.</summary>
+    public const int BibleIdFieldNumber = 1;
+    private string bibleId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string BibleId {
+      get { return bibleId_; }
+      set {
+        bibleId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "books" field.</summary>
+    public const int BooksFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::BCCMedia.BibleServer.Book> _repeated_books_codec
+        = pb::FieldCodec.ForMessage(18, global::BCCMedia.BibleServer.Book.Parser);
+    private readonly pbc::RepeatedField<global::BCCMedia.BibleServer.Book> books_ = new pbc::RepeatedField<global::BCCMedia.BibleServer.Book>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::BCCMedia.BibleServer.Book> Books {
+      get { return books_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ListBooksResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ListBooksResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (BibleId != other.BibleId) return false;
+      if(!books_.Equals(other.books_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (BibleId.Length != 0) hash ^= BibleId.GetHashCode();
+      hash ^= books_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (BibleId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(BibleId);
+      }
+      books_.WriteTo(output, _repeated_books_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (BibleId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(BibleId);
+      }
+      books_.WriteTo(ref output, _repeated_books_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (BibleId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BibleId);
+      }
+      size += books_.CalculateSize(_repeated_books_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ListBooksResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.BibleId.Length != 0) {
+        BibleId = other.BibleId;
+      }
+      books_.Add(other.books_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            BibleId = input.ReadString();
+            break;
+          }
+          case 18: {
+            books_.AddEntriesFrom(input, _repeated_books_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            BibleId = input.ReadString();
+            break;
+          }
+          case 18: {
+            books_.AddEntriesFrom(ref input, _repeated_books_codec);
             break;
           }
         }

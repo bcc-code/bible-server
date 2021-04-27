@@ -19,6 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BibleServerClient interface {
 	GetVerses(ctx context.Context, in *GetVersesRequest, opts ...grpc.CallOption) (*GetVersesResponse, error)
+	ListBooks(ctx context.Context, in *ListBooksRequest, opts ...grpc.CallOption) (*ListBooksResponse, error)
 }
 
 type bibleServerClient struct {
@@ -38,11 +39,21 @@ func (c *bibleServerClient) GetVerses(ctx context.Context, in *GetVersesRequest,
 	return out, nil
 }
 
+func (c *bibleServerClient) ListBooks(ctx context.Context, in *ListBooksRequest, opts ...grpc.CallOption) (*ListBooksResponse, error) {
+	out := new(ListBooksResponse)
+	err := c.cc.Invoke(ctx, "/bibleserver.BibleServer/ListBooks", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BibleServerServer is the server API for BibleServer service.
 // All implementations must embed UnimplementedBibleServerServer
 // for forward compatibility
 type BibleServerServer interface {
 	GetVerses(context.Context, *GetVersesRequest) (*GetVersesResponse, error)
+	ListBooks(context.Context, *ListBooksRequest) (*ListBooksResponse, error)
 	mustEmbedUnimplementedBibleServerServer()
 }
 
@@ -52,6 +63,9 @@ type UnimplementedBibleServerServer struct {
 
 func (UnimplementedBibleServerServer) GetVerses(context.Context, *GetVersesRequest) (*GetVersesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVerses not implemented")
+}
+func (UnimplementedBibleServerServer) ListBooks(context.Context, *ListBooksRequest) (*ListBooksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBooks not implemented")
 }
 func (UnimplementedBibleServerServer) mustEmbedUnimplementedBibleServerServer() {}
 
@@ -84,6 +98,24 @@ func _BibleServer_GetVerses_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BibleServer_ListBooks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListBooksRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BibleServerServer).ListBooks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bibleserver.BibleServer/ListBooks",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BibleServerServer).ListBooks(ctx, req.(*ListBooksRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BibleServer_ServiceDesc is the grpc.ServiceDesc for BibleServer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -94,6 +126,10 @@ var BibleServer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetVerses",
 			Handler:    _BibleServer_GetVerses_Handler,
+		},
+		{
+			MethodName: "ListBooks",
+			Handler:    _BibleServer_ListBooks_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

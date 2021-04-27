@@ -2,11 +2,11 @@ package main
 
 import (
 	"context"
-	"database/sql"
 	"fmt"
 	"regexp"
 	"strings"
 
+	"go.bcc.media/bibleserver/bibles"
 	"go.bcc.media/bibleserver/proto"
 )
 
@@ -20,22 +20,21 @@ func init() {
 	footnoteRegexp = regexp.MustCompile("{(\\*+) (.+?)}")
 }
 
+// VerseList is sa []Verse with helper methods
 type VerseList []Verse
 
+// ToProto unvraps the objects in the list
 func (vl VerseList) ToProto() []*proto.Verse {
 	pl := []*proto.Verse{}
 	for _, v := range vl {
-		pl = append(pl, v.ToProto())
+		pl = append(pl, v.Verse)
 	}
-
 	return pl
 }
 
 // Verse represents a single verse from the bible
 type Verse struct {
-	Number    uint32
-	Text      string
-	Footnotes map[string]string
+	*proto.Verse
 }
 
 func (v Verse) removeTags() Verse {
@@ -56,20 +55,14 @@ func (v Verse) parseFootnotes() Verse {
 	return v
 }
 
-func (v Verse) ToProto() *proto.Verse {
-	return &proto.Verse{
-		Number:    v.Number,
-		Text:      v.Text,
-		Footnotes: v.Footnotes,
-	}
-}
-
 // NewVerse constructs and parses the text for a verse
 func NewVerse(number uint32, text string) Verse {
 	v := Verse{
-		Number:    number,
-		Text:      text,
-		Footnotes: map[string]string{},
+		Verse: &proto.Verse{
+			Number:    number,
+			Text:      text,
+			Footnotes: map[string]string{},
+		},
 	}
 
 	v = v.removeTags()
@@ -79,11 +72,9 @@ func NewVerse(number uint32, text string) Verse {
 	return v
 }
 
-func getVerses(ctx context.Context, bibles map[string]*sql.DB, bibleID string, book, chapter, verseFrom, verseTo uint32) (VerseList, error) {
-	var bible *sql.DB
-	if b, ok := bibles[bibleID]; ok {
-		bible = b
-	} else {
+func getVerses(ctx context.Context, bibleID string, book, chapter, verseFrom, verseTo uint32) (VerseList, error) {
+	bible := bibles.Get(bibleID)
+	if bible == nil {
 		return nil, fmt.Errorf("Bible %s not found", bibleID)
 	}
 
