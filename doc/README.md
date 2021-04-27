@@ -1,6 +1,6 @@
-# Initial page
+# HTTP API
 
-{% api-method method="get" host="https://bibleapi.bcc.media" path="/v1/bible/:bible/books" %}
+{% api-method method="get" host="https://bibleapi.bcc.media" path="/v1/:bible/books" %}
 {% api-method-summary %}
 Get all Books
 {% endapi-method-summary %}
@@ -42,5 +42,51 @@ Could not find a bible matching this query.
 {% endapi-method-spec %}
 {% endapi-method %}
 
+{% api-method method="get" host="https://bibleapi.bcc.media" path="/v1/:bible/:book/:chapter/:verse\_from/:verse\_to" %}
+{% api-method-summary %}
+Get verse\(s\)
+{% endapi-method-summary %}
 
+{% api-method-description %}
+
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+{% api-method-path-parameters %}
+{% api-method-parameter name="verse\_to" type="integer" required=false %}
+Last verse you wish to retrieve. If left empty a single verse will be returned
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="verse\_from" type="integer" required=true %}
+Number of the starting verse
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="chapter" type="integer" required=true %}
+Chapter number starting with 1
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="book" type="string" required=true %}
+Canonical short bible book OD
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="bible" type="string" required=true %}
+Bible ID
+{% endapi-method-parameter %}
+{% endapi-method-path-parameters %}
+{% endapi-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+
+{% endapi-method-response-example-description %}
+
+```
+
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
 

@@ -1,4 +1,6 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [HTTP API](README.md)
+* [GRPC API](grpc-api.md)
+* [Canonical representation of Verses](canonical-representation-of-verses.md)
 
