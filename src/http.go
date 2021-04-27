@@ -29,7 +29,7 @@ type verseResponse struct {
 
 func getVersesHandler(c *gin.Context) {
 	bibleID := c.Param("bible")
-	book, _ := strconv.ParseInt(c.Param("book"), 10, 32)
+	book := c.Param("book")
 	chapter, _ := strconv.ParseInt(c.Param("chapter"), 10, 32)
 	verseFrom, _ := strconv.ParseInt(c.Param("verse_from"), 10, 32)
 	verseTo, _ := strconv.ParseInt(c.Param("verse_to"), 10, 32)
@@ -38,7 +38,7 @@ func getVersesHandler(c *gin.Context) {
 		verseTo = verseFrom
 	}
 
-	verses, err := getVerses(c.Request.Context(), bibleID, uint32(book), uint32(chapter), uint32(verseFrom), uint32(verseTo))
+	verses, err := getVerses(c.Request.Context(), bibleID, canonicalBookToNumber[book], uint32(chapter), uint32(verseFrom), uint32(verseTo))
 	if err != nil {
 		log.L.Err(err).Msg("")
 		c.AbortWithStatus(500)
