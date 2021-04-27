@@ -50,7 +50,7 @@ func main() {
 
 	// Create the main listener.
 
-	l, err := net.Listen("tcp", (fmt.Sprintf("127.0.0.1:%s", getEnv("PORT", "8000"))))
+	l, err := net.Listen("tcp", (fmt.Sprintf(":%s", getEnv("PORT", "8000"))))
 	if err != nil {
 		log.L.Fatal().Err(err).Msg("")
 	}
