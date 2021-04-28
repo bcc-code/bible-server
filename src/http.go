@@ -8,6 +8,7 @@ import (
 	_ "github.com/mattn/go-sqlite3" // Import go-sqlite3 library
 
 	"go.bcc.media/bibleserver/log"
+	"go.bcc.media/bibleserver/proto"
 )
 
 func listBooks(c *gin.Context) {
@@ -38,7 +39,8 @@ func getVersesHandler(c *gin.Context) {
 		verseTo = verseFrom
 	}
 
-	verses, err := getVerses(c.Request.Context(), bibleID, canonicalBookToNumber[book], uint32(chapter), uint32(verseFrom), uint32(verseTo))
+	bookID := canonicalBookToNumber[book]
+	verses, err := getVerses(c.Request.Context(), bibleID, bookID, uint32(chapter), uint32(verseFrom), uint32(verseTo))
 	if err != nil {
 		log.L.Err(err).Msg("")
 		c.AbortWithStatus(500)
@@ -50,5 +52,10 @@ func getVersesHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(200, verseResponse{Verses: verses})
+	c.JSON(200, proto.GetVersesResponse{
+		BibleId: bibleID,
+		BookId:  book,
+		Chapter: uint32(chapter),
+		Verses:  verses.ToProto(),
+	})
 }
