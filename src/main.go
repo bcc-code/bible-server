@@ -5,6 +5,7 @@ import (
 	"net"
 	"os"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/logger"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog"
@@ -53,6 +54,14 @@ func main() {
 	router.Use(logger.SetLogger(logger.Config{
 		Logger: log.L,
 	}))
+
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:  []string{"*"},
+		AllowMethods:  []string{"GET"},
+		AllowHeaders:  []string{"Origin"},
+		ExposeHeaders: []string{"Content-Length"},
+	}))
+
 	router.GET("v1/:bible/books", listBooks)
 	router.GET("v1/:bible/:book/:chapter/:verse_from", getVersesHandler)
 	router.GET("v1/:bible/:book/:chapter/:verse_from/:verse_to", getVersesHandler)
