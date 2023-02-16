@@ -1,0 +1,31 @@
+name: Build and Deploy to The New Documentation Site
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["master","main"]
+    paths:
+      - docs/**
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build documentation site and uploads it to Azure storage
+        uses: bcc-code/bcc-documentation-base@v2
+        with:
+          title: Bible Server
+          description: This is a service with a simple API that can serve bible verses and some other basic things like a listing of books available in the selected bible.
