@@ -29,3 +29,4 @@ jobs:
         with:
           title: Bible Server
           description: This is a service with a simple API that can serve bible verses and some other basic things like a listing of books available in the selected bible.
+          docs-dir: doc
