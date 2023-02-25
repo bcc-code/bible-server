@@ -9,7 +9,7 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.7
 	github.com/rs/zerolog v1.21.0
 	github.com/soheilhy/cmux v0.1.5
-	golang.org/x/sys v0.0.0-20210304124612-50617c2ba197 // indirect
+	golang.org/x/sys v0.1.0 // indirect
 	golang.org/x/text v0.3.5 // indirect
 	google.golang.org/grpc v1.37.0
 	google.golang.org/protobuf v1.26.0
