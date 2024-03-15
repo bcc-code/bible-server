@@ -10,5 +10,5 @@ require (
 	github.com/rs/zerolog v1.21.0
 	github.com/soheilhy/cmux v0.1.5
 	google.golang.org/grpc v1.56.3
-	google.golang.org/protobuf v1.30.0
+	google.golang.org/protobuf v1.33.0
 )
